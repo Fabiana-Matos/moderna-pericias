@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Projeto acadêmico demonstrativo de primeiro atendimento em perícia contábil — Moderna Perícias.">
+<meta name="theme-color" content="#142b4a">
+<title>Moderna Perícias | Primeiro atendimento</title>
+<style>
+:root{
+  --navy:#142b4a;--blue:#234c78;--gold:#c7a66a;--ink:#17212f;
+  --muted:#657386;--paper:#f5f7fa;--white:#fff;--line:#e2e8f0;
+  --green:#20745a;--shadow:0 18px 50px rgba(20,43,74,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.6}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #7da6d4;outline-offset:3px}
+header{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.nav{max-width:1140px;margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand img{width:min(245px,46vw);height:auto;display:block}
+.navlinks{display:flex;gap:22px;align-items:center;font-size:.93rem;flex-wrap:wrap}
+.navlinks a{text-decoration:none;color:var(--navy);font-weight:700}
+.navlinks a:hover{color:#98763d}
+.hero{background:linear-gradient(120deg,#102642,#214b75);color:white;overflow:hidden}
+.hero-inner{max-width:1140px;margin:auto;padding:66px 24px 72px;display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center}
+.eyebrow{color:#e3c891;text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:.76rem}
+h1{font-size:clamp(2.25rem,5vw,3.7rem);line-height:1.08;letter-spacing:-.04em;margin:14px 0 20px}
+.hero p{font-size:1.08rem;color:#e0e8f1;max-width:600px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:9px;padding:13px 19px;background:var(--gold);color:#142b4a;font-weight:800;text-decoration:none;cursor:pointer;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.hero-card{background:#fff;color:var(--ink);padding:28px;border-radius:18px;box-shadow:var(--shadow)}
+.hero-card h2{margin:0 0 8px;color:var(--navy);font-size:1.25rem}
+.hero-card p{color:var(--muted);font-size:.95rem;margin:0 0 16px}
+.steps{display:grid;gap:12px}
+.step{display:flex;gap:12px;align-items:center;font-size:.93rem}
+.num{width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:#edf2f8;color:var(--navy);display:grid;place-items:center;font-weight:800}
+.academic-banner{background:#fff8e9;border-bottom:1px solid #ead8b6;color:#654e25;text-align:center;padding:10px 18px;font-size:.88rem}
+section{scroll-margin-top:24px}
+.wrap{max-width:1000px;margin:auto;padding:58px 24px}
+.section-head{text-align:center;max-width:720px;margin:0 auto 30px}
+.section-head h2{font-size:clamp(1.7rem,3vw,2.35rem);color:var(--navy);margin:0 0 8px;letter-spacing:-.025em}
+.section-head p{color:var(--muted);margin:0}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.about-card{background:#fff;border:1px solid var(--line);padding:23px;border-radius:14px}
+.about-card .symbol,.service .symbol{font-size:1.35rem;color:var(--gold);font-weight:800}
+.about-card h3{margin:8px 0;color:var(--navy);font-size:1.05rem}
+.about-card p{margin:0;color:var(--muted);font-size:.94rem}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.service{background:#fff;border:1px solid var(--line);padding:22px;border-radius:14px}
+.service h3{margin:8px 0;color:var(--navy);font-size:1.04rem}
+.service p{margin:0;color:var(--muted);font-size:.92rem}
+.process{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.process-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+.process-card .num{margin-bottom:12px}
+.process-card h3{font-size:.98rem;color:var(--navy);margin:0 0 7px}
+.process-card p{font-size:.87rem;color:var(--muted);margin:0}
+.form-card{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px)}
+.progress-top{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.progress{height:7px;background:#edf1f6;border-radius:99px;overflow:hidden;margin-bottom:28px}
+.progress span{display:block;height:100%;width:25%;background:var(--gold);transition:width .25s}
+fieldset{border:0;padding:0;margin:0;display:none;min-width:0}
+fieldset.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
+fieldset h3{color:var(--navy);font-size:1.35rem;margin:0 0 5px}
+.hint{color:var(--muted);margin:0 0 22px;font-size:.93rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:17px;min-width:0}
+.field.full{grid-column:1/-1}
+label,.label{font-size:.91rem;font-weight:700;color:#27384d}
+input,select,textarea{width:100%;border:1px solid #ccd6e2;border-radius:9px;padding:12px 13px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:#4775a5;box-shadow:0 0 0 3px #dce8f5}
+textarea{min-height:112px;resize:vertical}
+.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{border:1px solid #d4dde8;border-radius:10px;padding:13px;display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.choice:has(input:checked){border-color:var(--blue);background:#f1f6fb}
+.choice input{width:auto;flex:0 0 auto;margin-top:5px}
+.choice strong{display:block;font-size:.94rem}
+.choice small{color:var(--muted);display:block;margin-top:2px;font-weight:400}
+.form-actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.btn-secondary{background:#eef2f7;color:var(--navy)}
+.error{color:#a12b2b;font-size:.88rem;display:none;margin-top:12px}
+.result{display:none;border:1px solid #c9dfd5;background:#f3faf6;border-radius:14px;padding:clamp(18px,3vw,28px);margin-top:22px;overflow-wrap:anywhere}
+.result h3{color:var(--green);margin:0 0 8px}
+.result p{margin:8px 0}
+.result ul{padding-left:21px}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.result-actions .btn{margin:0}
+.result .status{display:inline-block;background:#e1f2e9;color:#185d45;padding:4px 9px;border-radius:99px;font-size:.82rem;font-weight:800}
+.note{font-size:.84rem;color:var(--muted);margin-top:16px}
+.faq{max-width:800px;margin:auto;display:grid;gap:12px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px 19px}
+summary{cursor:pointer;color:var(--navy);font-weight:800}
+details p{color:var(--muted);margin:12px 0 0}
+footer{background:#102642;color:#d9e3ee}
+.footer-inner{max-width:1140px;margin:auto;padding:30px 24px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-inner img{width:165px;max-width:100%;background:white;border-radius:4px}
+footer p{font-size:.83rem;margin:5px 0;color:#c2cfdd}
+footer .footer-copy{max-width:520px}
+@media(max-width:900px){.process{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+ .hero-inner{grid-template-columns:1fr;padding-top:48px}
+ .nav{align-items:flex-start;flex-direction:column}
+ .navlinks{gap:12px;font-size:.84rem}
+ .grid,.services,.about-grid{grid-template-columns:1fr}
+ .footer-inner{align-items:flex-start;flex-direction:column}
+ .choice-row{grid-template-columns:1fr}
+ .process{grid-template-columns:1fr}
+ .progress-top{align-items:flex-start;flex-direction:column;gap:2px}
+ .form-actions{flex-wrap:wrap}
+ .form-actions .btn{flex:1}
+}
+@media print{
+ @page{size:auto;margin:16mm}
+ body{background:#fff;color:#111;font-size:10.5pt}
+ header,.hero,.academic-banner,#sobre,#atuacao,#como-funciona,#faq,.form-actions,.result-actions,footer,.section-head,#triageForm fieldset,.progress-top,.progress,.note.no-print{display:none!important}
+ main,#atendimento,.wrap,.form-card{display:block!important;max-width:none!important;padding:0!important;margin:0!important;border:0!important;box-shadow:none!important;background:#fff!important}
+ #atendimento .section-head{display:none!important}
+ #result{display:block!important;border:0!important;background:#fff!important;padding:0!important;margin:0!important}
+ #result h3{color:#142b4a}
+ a{color:#111;text-decoration:none}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav" aria-label="Navegação principal">
+    <a class="brand" href="#inicio" aria-label="Moderna Perícias — início">
+      <img src="logo-moderna.png" alt="Moderna Perícias" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;color:#142b4a;font-size:1.25rem;font-weight:900">MODERNA PERÍCIAS</span>
+    </a>
+    <div class="navlinks">
+      <a href="#sobre">Sobre nós</a><a href="#atuacao">Áreas de atuação</a>
+      <a href="#como-funciona">Como funciona</a><a href="#atendimento">Primeiro atendimento ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Análise técnica • Clareza • Confiança</div>
+        <h1>O primeiro passo para esclarecer os fatos.</h1>
+        <p>A Moderna Perícias organiza as informações iniciais da sua demanda para identificar o assunto, compreender o contexto e apresentar próximos passos indicativos de uma avaliação pericial contábil.</p>
+        <a class="btn" href="#atendimento">Iniciar simulação gratuita →</a>
+      </div>
+      <aside class="hero-card">
+        <h2>Como funciona a simulação?</h2>
+        <p>Preencha as quatro etapas para visualizar um resumo demonstrativo e orientações gerais sobre a continuidade de um atendimento.</p>
+        <div class="steps"
+          <div class="step"><span class="num">1</span><span>Perfil do solicitante</span></div>
+          <div class="step"><span class="num">2</span><span>Tipo de demanda e contexto</span></div>
+          <div class="step"><span class="num">3</span><span>Detalhes do caso</span></div>
+          <div class="step"><span class="num">4</span><span>Documentos e próximos passos</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="sobre" class="wrap">
+    <div class="section-head"><h2>Sobre a Moderna Perícias</h2></div>
+    <div class="about-grid">
+      <article class="about-card"><div class="symbol">◎</div><h3>Nossa missão</h3><p>Realizar serviços de perícia com excelência técnica, imparcialidade e responsabilidade, buscando esclarecer fatos por meio de análises criteriosas, evidências confiáveis e laudos precisos que contribuam para a tomada de decisões justas e fundamentadas.</p></article>
+      <article class="about-card"><div class="symbol">◇</div><h3>Nossa visão</h3><p>Ser reconhecida como uma empresa de referência em serviços periciais, destacando-se pela qualidade técnica, credibilidade, inovação e compromisso com a verdade.</p></article>
+      <article class="about-card"><div class="symbol">✓</div><h3>Nossos valores</h3><p>São pautados pela ética profissional, imparcialidade, precisão técnica, compromisso com a verdade, confidencialidade, responsabilidade e excelência nos serviços prestados, buscando sempre atuar com transparência, integridade, respeito à legislação e aperfeiçoamento contínuo, garantindo credibilidade e confiança em cada trabalho realizado.</p></article>
+    </div>
+    
+
+  <section id="atuacao" class="wrap" style="padding-top:12px">
+    <div class="section-head"><h2>Áreas de atuação</h2></div>
+    <div class="services">
+      <article class="service"><div class="symbol">▤</div><h3>Perícia Contábil</h3><p>Análise de livros, registros, demonstrações contábeis e divergências patrimoniais.</p></article>
+      <article class="service"><div class="symbol">⚖</div><h3>Perícia Trabalhista</h3><p>Análise de cálculos trabalhistas, verbas rescisórias, horas extras e direitos relacionados.</p></article>
+      <article class="service"><div class="symbol">▧</div><h3>Perícia Tributária</h3><p>Análise de tributos, apurações fiscais, obrigações e documentos tributários.</p></article>
+      <article class="service"><div class="symbol">▥</div><h3>Perícia Financeira</h3><p>Análise de contratos, juros, financiamentos, dívidas e evolução de saldos.</p></article>
+      <article class="service"><div class="symbol">◷</div><h3>Perícia Previdenciária</h3><p>Análise de contribuições previdenciárias, períodos considerados e cálculos de benefícios.</p></article>
+      <article class="service"><div class="symbol">≡</div><h3>Perícia de Apuração de Contas</h3><p>Conferência de receitas, despesas, comprovantes, saldos e prestação de contas.</p></article>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="wrap" style="padding-top:12px">
+    <div class="section-head"><h2>O que acontece depois da triagem?</h2></div>
+    <div class="process">
+      <article class="process-card"><div class="num">1</div><h3>Registro inicial</h3><p>Organização das informações fornecidas e identificação da questão principal.</p></article>
+      <article class="process-card"><div class="num">2</div><h3>Análise preliminar</h3><p>Verificação inicial do contexto, do objetivo e dos prazos informados.</p></article>
+      <article class="process-card"><div class="num">3</div><h3>Documentos</h3><p>Orientação sobre os documentos necessários e seu envio por canal apropriado e seguro.</p></article>
+      <article class="process-card"><div class="num">4</div><h3>Escopo e proposta</h3><p>Delimitação do serviço, dos prazos possíveis, das condições e dos honorários.</p></article>
+      <article class="process-card"><div class="num">5</div><h3>Execução</h3><p>Após contratação, realização do trabalho e entrega conforme o escopo acordado.</p></article>
+    </div>
+  </section>
+
+  <section id="atendimento" class="wrap">
+    <div class="section-head"><h2>Primeiro atendimento</h2><p>Responda às perguntas para gerar uma triagem, com orientações gerais e relatório para impressão ou PDF.</p></div>
+    <form class="form-card" id="triageForm" novalidate>
+      <div class="progress-top"><span id="stepLabel">Etapa 1 de 4</span><span id="stepTitle">Perfil do solicitante</span></div>
+      <div class="progress" aria-label="Progresso do formulário"><span id="progressBar"></span></div>
+
+      <fieldset class="active" data-title="Perfil do solicitante">
+        <h3>Quem está solicitando o atendimento?</h3><p class="hint">Selecione o perfil que melhor representa o solicitante fictício.</p>
+        <div class="field">
+          <span class="label">Tipo de pessoa *</span>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="perfil" value="Pessoa física (CPF)" required><span><strong>Pessoa física</strong><small>Atendimento em nome próprio</small></span></label>
+            <label class="choice"><input type="radio" name="perfil" value="Pessoa jurídica (CNPJ)" required><span><strong>Pessoa jurídica</strong><small>Empresa ou organização</small></span></label>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="field"><label for="nome">Nome fictício do solicitante *</label><input id="nome" name="nome" autocomplete="off" required maxlength="120" placeholder="Ex.: Cliente Demonstrativo"></div>
+          <div class="field"><label for="contato">E-mail fictício (opcional)</label><input id="contato" name="contato" type="email" autocomplete="off" maxlength="160" placeholder="cliente@exemplo.com"></div>
+        </div>
+        <p class="note">Não informe CPF, CNPJ, dados bancários, documentos reais ou informações confidenciais.</p>
+      </fieldset>
+
+      <fieldset data-title="Tipo de perícia">
+        <h3>Qual é o assunto principal?</h3><p class="hint">Se não tiver certeza, escolha “Ainda não sei identificar”. A triagem é apenas indicativa.</p>
+        <div class="field"><label for="tipo">Tipo de demanda *</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Selecione uma opção</option>
+            <option>Perícia contábil — registros e demonstrações</option>
+            <option>Perícia trabalhista — cálculos e verbas</option>
+            <option>Perícia tributária — tributos e questões fiscais</option>
+            <option>Perícia financeira — contratos, juros e financiamentos</option>
+            <option>Perícia previdenciária — contribuições e benefícios</option>
+            <option>Perícia de apuração de contas — receitas e despesas</option>
+            <option>Apuração de haveres ou dissolução societária</option>
+            <option>Apuração de valores em processo judicial</option>
+            <option>Fraude ou divergência financeira suspeita</option>
+            <option>Ainda não sei identificar</option>
+          </select>
+        </div>
+        <div class="field"><label for="ambito">Em qual contexto surgiu a demanda? *</label>
+          <select id="ambito" name="ambito" required>
+            <option value="">Selecione uma opção</option><option>Processo judicial em andamento</option><option>Possível processo judicial</option><option>Negociação ou análise extrajudicial</option><option>Questão interna de empresa</option><option>Outro / não sei informar</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset data-title="Detalhes do caso">
+        <h3>Conte um pouco sobre o caso</h3><p class="hint">Use um exemplo fictício e evite dados pessoais ou informações sigilosas.</p>
+        <div class="field"><label for="descricao">Resumo da situação *</label><textarea id="descricao" name="descricao" required minlength="10" maxlength="2000" placeholder="Ex.: em um caso fictício, existem valores diferentes em duas planilhas..."></textarea></div>
+        <div class="field"><label for="urgencia">Existe algum prazo importante? *</label>
+          <select id="urgencia" name="urgencia" required><option value="">Selecione uma opção</option><option>Sim, há prazo judicial ou contratual próximo</option><option>Há um prazo, mas não é próximo</option><option>Não tenho conhecimento de prazo</option></select>
+        </div>
+      </fieldset>
+
+      <fieldset data-title="Documentos e conclusão">
+        <h3>Quais documentos estariam disponíveis?</h3><p class="hint">Marque os itens do exemplo. Não anexe arquivos nesta simulação.</p>
+        <div class="field">
+          <label class="choice"><input type="checkbox" name="docs" value="Contrato ou instrumento relacionado"><span>Contrato ou instrumento relacionado</span></label>
+          <label class="choice"><input type="checkbox" name="docs" value="Planilhas, extratos ou comprovantes"><span>Planilhas, extratos ou comprovantes</span></label>
+          <label class="choice"><input type="checkbox" name="docs" value="Livros ou demonstrações contábeis"><span>Livros ou demonstrações contábeis</span></label>
+          <label class="choice"><input type="checkbox" name="docs" value="Petição, decisão ou documentos do processo"><span>Petição, decisão ou documentos do processo</span></label>
+          <label class="choice"><input type="checkbox" name="docs" value="Ainda não tenho documentos organizados"><span>Ainda não tenho documentos organizados</span></label>
+        </div>
+        <div class="field"><label for="objetivo">O que se espera esclarecer? (opcional)</label><textarea id="objetivo" name="objetivo" maxlength="1000" placeholder="Ex.: comparar valores apresentados em documentos fictícios..."></textarea></div>
+        <label class="choice"><input type="checkbox" id="consent" required><span>Confirmo que este preenchimento é uma simulação acadêmica e não contém dados reais. *</span></label>
+      </fieldset>
+
+      <div class="error" id="errorMsg" role="alert" aria-live="assertive">Revise os campos obrigatórios desta etapa antes de continuar.</div>
+      <div class="form-actions"><button type="button" class="btn btn-secondary" id="backBtn" style="visibility:hidden">← Voltar</button><button type="button" class="btn" id="nextBtn">Próxima etapa →</button></div>
+      <div class="result" id="result" aria-live="polite"></div>
+    </form>
+    <p class="note no-print">Aviso: os dados são processados somente nesta página e não são enviados a um servidor. O protocolo é demonstrativo e não representa um atendimento real nem substitui orientação profissional ou avaliação pericial.</p>
+  </section>
+
+  <section id="faq" class="wrap" style="padding-top:10px">
+    <div class="section-head"><h2>Perguntas frequentes</h2><p>Informações sobre o funcionamento desta demonstração.</p></div>
+    <div class="faq">
+      <details><summary>A simulação envia meus dados para a empresa?</summary><p>Não. Nesta versão, as informações são utilizadas no navegador para montar o resultado. Não há integração com servidor, e-mail, WhatsApp ou sistema de atendimento.</p></details>
+      <details><summary>O resultado é um parecer pericial?</summary><p>Não. É um resumo automatizado e educativo, baseado nas opções preenchidas. Não verifica documentos nem conclui sobre fatos, direitos, valores ou viabilidade técnica.</p></details>
+      <details><summary>Como salvo o relatório?</summary><p>Ao concluir a triagem, use “Imprimir / salvar em PDF”. Na janela de impressão do navegador, selecione “Salvar como PDF”, se essa opção estiver disponível.</p></details>
+      <details><summary>Quais documentos devo enviar?</summary><p>Nenhum documento é enviado por este site. Em um atendimento real, os documentos adequados dependeriam da demanda e deveriam ser compartilhados por um canal seguro após orientação apropriada.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="logo-moderna.png" alt="Moderna Perícias" onerror="this.style.display='none'">
+      <p>Projeto acadêmico demonstrativo</p>
+      <p>Universidade Federal da Bahia</p>
+      <p>Faculdade de Ciências Contábeis</p>
+      <p>Pericia Contábil e Arbitragem</p>
+      <p>Docente: Célia Sacramento</p>
+      <p>Discente: Fabiana Matos</p>
+    </div>
+    <div class="footer-copy">
+      <p>© <span id="year"></span> Moderna Perícias · Projeto acadêmico fictício</p>
+      <p>Esta página não oferece contratação, atendimento profissional ou envio real de solicitações.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+const form = document.getElementById('triageForm');
+const steps = Array.from(form.querySelectorAll('fieldset'));
+const progressBar = document.getElementById('progressBar');
+const stepLabel = document.getElementById('stepLabel');
+const stepTitle = document.getElementById('stepTitle');
+const backBtn = document.getElementById('backBtn');
+const nextBtn = document.getElementById('nextBtn');
+const errorMsg = document.getElementById('errorMsg');
+const result = document.getElementById('result');
+let current = 0;
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function showStep(index) {
+  current = index;
+  steps.forEach((step, i) => step.classList.toggle('active', i === current));
+  stepLabel.textContent = `Etapa ${current + 1} de ${steps.length}`;
+  stepTitle.textContent = steps[current].dataset.title;
+  progressBar.style.width = `${((current + 1) / steps.length) * 100}%`;
+  backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+  nextBtn.textContent = current === steps.length - 1 ? 'Gerar resumo da triagem ✓' : 'Próxima etapa →';
+  errorMsg.style.display = 'none';
+}
+
+function validCurrent() {
+  const required = Array.from(steps[current].querySelectorAll('[required]'));
+  for (const el of required) {
+    if (el.type === 'radio') {
+      if (!steps[current].querySelector(`input[name="${el.name}"]:checked`)) {
+        el.focus();
+        return false;
+      }
+    } else if (el.type === 'checkbox') {
+      if (!el.checked) {
+        el.focus();
+        return false;
+      }
+    } else if (!el.checkValidity() || !el.value.trim()) {
+      el.focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+backBtn.addEventListener('click', () => {
+  if (current > 0) showStep(current - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+  if (!validCurrent()) {
+    errorMsg.style.display = 'block';
+    return;
+  }
+  if (current < steps.length - 1) {
+    showStep(current + 1);
+    document.getElementById('atendimento').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  makeResult();
+});
+
+function getEncaminhamento(tipo) {
+  const t = tipo.toLocaleLowerCase('pt-BR');
+  if (t.includes('perícia contábil')) return 'Possível encaminhamento: organizar os registros, livros e demonstrações pertinentes para avaliar as divergências contábeis relatadas.';
+  if (t.includes('perícia trabalhista')) return 'Possível encaminhamento: organizar os cálculos, demonstrativos e documentos relacionados às verbas e ao período analisado.';
+  if (t.includes('perícia tributária')) return 'Possível encaminhamento: reunir apurações fiscais, demonstrativos e documentos tributários relacionados ao assunto.';
+  if (t.includes('perícia financeira')) return 'Possível encaminhamento: reunir o contrato, as condições financeiras e as memórias de cálculo para comparação.';
+  if (t.includes('perícia previdenciária')) return 'Possível encaminhamento: organizar os registros contributivos e os demonstrativos relacionados aos períodos e valores em questão.';
+  if (t.includes('apuração de contas')) return 'Possível encaminhamento: organizar receitas, despesas, comprovantes, saldos e demonstrativos de prestação de contas.';
+  if (t.includes('haveres') || t.includes('dissolução societária')) return 'Possível encaminhamento: delimitar o período e os critérios a examinar e organizar os registros contábeis e patrimoniais relevantes.';
+  if (t.includes('processo judicial')) return 'Possível encaminhamento: identificar os pontos técnicos e os documentos processuais relevantes; prazos judiciais devem ser verificados com o profissional responsável.';
+  if (t.includes('fraude') || t.includes('divergência financeira')) return 'Possível encaminhamento: documentar objetivamente as divergências observadas e organizar os registros pertinentes, sem presumir que houve fraude.';
+  return 'Possível encaminhamento: esclarecer o objetivo da análise e organizar os documentos disponíveis para que a modalidade e a viabilidade técnica possam ser avaliadas.';
+}
+
+function getNextSteps(urgencia, docs) {
+  const items = [];
+  if (urgencia.startsWith('Sim')) {
+    items.push('Atenção: confirmar imediatamente as datas e os requisitos do prazo informado com o profissional responsável pelo caso. Esta simulação não calcula nem valida prazos.');
+  } else if (urgencia.startsWith('Há um prazo')) {
+    items.push('Registrar a data e a natureza do prazo e confirmar sua aplicabilidade com o profissional responsável.');
+  } else {
+    items.push('Confirmar se existe algum prazo judicial, administrativo ou contratual que deva ser observado.');
+  }
+  if (!docs.length || docs.includes('Ainda não tenho documentos organizados')) {
+    items.push('Preparar uma lista dos documentos existentes e identificar quais ainda precisam ser localizados.');
+  } else {
+    items.push('Separar cópias legíveis dos documentos selecionados e conferir se correspondem ao período e ao assunto da demanda.');
+  }
+  items.push('Definir a questão que se pretende esclarecer e quais resultados são esperados da análise.');
+  items.push('Em um atendimento real, solicitar avaliação preliminar, definição do escopo e proposta antes de contratar qualquer serviço.');
+  return items;
+}
+
+function makeResult() {
+  const data = new FormData(form);
+  const perfil = data.get('perfil');
+  const tipo = data.get('tipo');
+  const ambito = data.get('ambito');
+  const urgencia = data.get('urgencia');
+  const docs = data.getAll('docs');
+  const protocolo = `MP-AC-${Date.now().toString().slice(-6)}`;
+  const encaminhamento = getEncaminhamento(tipo);
+  const nextSteps = getNextSteps(urgencia, docs);
+
+  // Os dados do formulário são inseridos como texto, não como HTML.
+  result.replaceChildren();
+  const heading = document.createElement('h3');
+  heading.textContent = 'Triagem demonstrativa concluída';
+  result.appendChild(heading);
+
+  const status = document.createElement('span');
+  status.className = 'status';
+  status.textContent = 'Simulação acadêmica — não enviada';
+  result.appendChild(status);
+
+  const addParagraph = (label, value) => {
+    const p = document.createElement('p');
+    const strong = document.createElement('strong');
+    strong.textContent = label + ': ';
+    p.append(strong, document.createTextNode(value || 'Não informado'));
+    result.appendChild(p);
+  };
+
+  addParagraph('Protocolo demonstrativo', protocolo);
+  addParagraph('Solicitante', `${data.get('nome')} — ${perfil}`);
+  addParagraph('E-mail fictício', data.get('contato') || 'Não informado');
+  addParagraph('Demanda indicada', tipo);
+  addParagraph('Contexto', ambito);
+  addParagraph('Resumo informado', data.get('descricao'));
+  addParagraph('Encaminhamento preliminar', encaminhamento);
+  addParagraph('Documentos indicados', docs.length ? docs.join('; ') : 'Nenhum item selecionado');
+  if (data.get('objetivo')) addParagraph('Objetivo informado', data.get('objetivo'));
+
+  const sub = document.createElement('h4');
+  sub.textContent = 'Orientações para a continuidade';
+  sub.style.color = 'var(--navy)';
+  result.appendChild(sub);
+  const list = document.createElement('ol');
+  nextSteps.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  result.appendChild(list);
+
+  const warning = document.createElement('p');
+  warning.className = 'note';
+  warning.textContent = 'Importante: este resumo foi gerado localmente no navegador. Nenhum dado foi enviado, nenhum contato foi realizado e nenhum documento foi analisado. O conteúdo não é parecer, laudo ou aconselhamento profissional.';
+  result.appendChild(warning);
+
+  const actions = document.createElement('div');
+  actions.className = 'result-actions';
+  const printBtn = document.createElement('button');
+  printBtn.type = 'button';
+  printBtn.className = 'btn';
+  printBtn.textContent = 'Imprimir / salvar em PDF';
+  printBtn.addEventListener('click', () => window.print());
+  const restartBtn = document.createElement('button');
+  restartBtn.type = 'button';
+  restartBtn.className = 'btn btn-secondary';
+  restartBtn.textContent = 'Nova simulação';
+  restartBtn.addEventListener('click', resetSimulation);
+  actions.append(printBtn, restartBtn);
+  result.appendChild(actions);
+
+  result.style.display = 'block';
+  nextBtn.style.display = 'none';
+  backBtn.style.display = 'none';
+  progressBar.style.width = '100%';
+  result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetSimulation() {
+  form.reset();
+  result.replaceChildren();
+  result.style.display = 'none';
+  nextBtn.style.display = '';
+  backBtn.style.display = '';
+  showStep(0);
+  document.getElementById('atendimento').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+showStep(0);
+</script>
+</body>
+</html>'''
+
